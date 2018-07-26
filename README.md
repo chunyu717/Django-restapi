@@ -53,7 +53,7 @@ urlpatterns = [
     
 ]
 
-# 編輯 model.py
+#編輯 model.py
 
 class Language(models.Model):
 	name = models.CharField(max_length=50)
@@ -118,3 +118,40 @@ post http://localhost:8000/languages/
 http://localhost:8000/languages/2/
 
 視頻最後三分鐘後面有說 model  加入 url , id 的方法 不重要所以沒加入
+
+
+# 倘若要 react 與 django 整合
+
+
+https://www.youtube.com/watch?v=kmpY6g5hYZI&list=WL&index=5&t=1s
+
+在 api_example\
+npx create--react-app frontend
+
+cd frontend\
+
+npm run build
+
+
+# 編輯 api_example\urls.py
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    #path('', include('languages.urls')),
+    path('language/', include('languages.urls')),
+    re_path('.*', TemplateView.as_view(template_name='index.html')),
+]
+
+
+
+# 編輯 api_example\settings.py
+
+TEMPLATES = [
+    {
+        'DIRS': [
+            os.path.join(BASE_DIR, 'frontend', 'build'),
+        ],
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'frontend', 'build', 'static'),
+]
+
