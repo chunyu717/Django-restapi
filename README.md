@@ -34,41 +34,48 @@ python manage.py startapp languages
 
 
 #  api_example\api_example\settings.py 加入
+```
 INSTALLED_APPS = [
 	'rest_framework',
 	'languages',
 ]
-
+```
 #以上設定完成
 
 #  api_example\api_example\urls.py 加入
+```
 urlpatterns = [
 	path('', incloude('languages.urls')
 ]
-
+```
 # 新增 api_example\laguages\urls.py 
+```
 from django.urls import path, include 
 from . import views
 urlpatterns = [
     
 ]
-
+```
 #編輯 model.py
-
+```
 class Language(models.Model):
 	name = models.CharField(max_length=50)
 	paradigm= models.CharField(max_length=50)
-
+```
 #建立 model language
+```
 $python manage.py makemigrations
-
+```
 #apply model language => 至此 已於 db 建立 Language
+```
 $python manage.py migrate
-
+```
 #跑起來
+```
 python .\manage.py runserver
-
+```
 # 註冊 model languages\admin.py  
+```
 from .models import Language
 admin.site.register(Language) 
 
@@ -80,9 +87,10 @@ from django.db import models
 class Language(models.Model):
 	name = models.CharField(max_length=50)
 	paradigm= models.CharField(max_length=50)
-
+```
 
 # 編輯 views.py
+```
 from django.shortcuts import render
 from rest_framework import viewsets
 from .models import Language
@@ -92,8 +100,9 @@ class LanguageView(viewsets.ModelViewSet):
 	queryset = Language.objects.all()
 	serializer_class = LanguageSerializer
 
- 
+ ```
 # 編輯 languages\url.py
+```
 from django.urls import path, include
 from . import views
 from rest_framework import routers
@@ -104,25 +113,27 @@ router.register('languages', views.LanguageView)
 urlpatterns = [
    path('', include(router.urls))
 ]
-
+```
 # 瀏覽 http://localhost:8000
 http://localhost:8000/admin
 
 # 用 postman 發發看
+```
 get http://localhost:8000/languages/
 
 post http://localhost:8000/languages/
 {"name": "C", "paradigm": "22"}
-
+```
 # router 會自己產生下面的model url 
+```
 http://localhost:8000/languages/2/
 
 視頻最後三分鐘後面有說 model  加入 url , id 的方法 不重要所以沒加入
-
+```
 
 # 倘若要 react 與 django 整合
 
-
+```
 https://www.youtube.com/watch?v=kmpY6g5hYZI&list=WL&index=5&t=1s
 
 在 api_example\
@@ -132,19 +143,20 @@ cd frontend\
 
 npm run build
 
-
+```
 # 編輯 api_example\urls.py
+```
 urlpatterns = [
     path('admin/', admin.site.urls),
     #path('', include('languages.urls')),
     path('language/', include('languages.urls')),
     re_path('.*', TemplateView.as_view(template_name='index.html')),
 ]
-
+```
 
 
 # 編輯 api_example\settings.py
-
+```
 TEMPLATES = [
     {
         'DIRS': [
@@ -154,4 +166,22 @@ TEMPLATES = [
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'frontend', 'build', 'static'),
 ]
+```
+# 自動化 run django & react :  $  python .\manage.py runserver  && npm run build
+編輯 manage.py
+```
+try:
+	if sys.argv[2] == 'react':
+		project_root = os.getcwd()
+		os.chdir(os.path.join(project_root, "frontend"))
+		os.system("npm run build")
+		os.chdir(project_root)
+		sys.argv.pop(2)
+except IndexError:
+	execute_from_command_line(sys.argv)
+else : 
+	execute_from_command_line(sys.argv)
+```
+然後就可透過 python manage.py runserver react 自動執行以上指令
+
 
