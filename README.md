@@ -1,14 +1,14 @@
 
-前至步驟
+# 前置步驟
 pip install pipenv
-Note : pipenv 的優點包括但不限於以下幾個：
-	1. 會在專案以外的地方放置專案所需的套件．
-	2. 自動管理套件之間的 dependency ，方便移除套件．例如安裝 pyspark 時會需要一併安裝 py4j ，如果單純使用 pip 安裝，雖然可以一併安裝，但是用 pip uninstall 移除時需要一個一個移除．這點在 pipenv 會幫忙管理，自動移除相關的 lib．
+* pipenv 的優點包括但不限於以下幾個：
+	1. 會在專案以外的地方放置專案所需的套件
+	2. 自動管理套件之間的 dependency ，方便移除套件．例如安裝 pyspark 時會需要一併安裝 py4j ，如果單純使用 pip 安裝，雖然可以一併安裝，但是用 pip uninstall 移除時需要一個一個移除．這點在 pipenv 會幫忙管理，自動移除相關的 lib
 	3. 可以區分 dev 環境的套件，在安裝時可以選擇要不要包含 dev 環境的套件．就可以保持 prod 套件的乾淨
-	4. 不需要使用 activate 或 deactivate 來切換環境．pipenv 可以使用 pipenv run 來直接使用虛擬環境提供的 lib．
-	如果對於以上優點有興趣的可以來試著用用看 pyenv．
+	4. 不需要使用 activate 或 deactivate 來切換環境．pipenv 可以使用 pipenv run 來直接使用虛擬環境提供的 lib
+	如果對於以上優點有興趣的可以來試著用用看 pyenv
 
-Getting Started With Django REST Framewore
+# Getting Started With Django REST Framewore
 https://www.youtube.com/watch?v=263xt_4mBNc&t=0s&list=WL&index=9
 
 #安裝 framwaork
