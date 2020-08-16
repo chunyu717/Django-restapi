@@ -23,6 +23,7 @@ pipenv 的優點包括但不限於以下幾個：
 ```
 
 # Getting Started With Django REST Framewore
+https://www.django-rest-framework.org/tutorial/quickstart/
 https://www.youtube.com/watch?v=263xt_4mBNc&t=0s&list=WL&index=9
 ## 安裝 djangorestframework framework :
 $ mkdir -p django-REST
