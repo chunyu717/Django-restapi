@@ -105,11 +105,13 @@ urlpatterns = [
 
 #### 新增 laguages\serializers.py  : 轉 model  轉成 json (因為不能 http 直接回覆 model)
 ```
-from django.db import models
+from rest_framework import serializers
+from .models import Language
 
-class Language(models.Model):
-	name = models.CharField(max_length=50)
-	paradigm= models.CharField(max_length=50)
+class LanguageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Language
+        fields = ('id', 'name', 'paradigm')
 ```
 
 #### 編輯 laguages\views.py  [處理請求，跟 model 取資料 redirct 或是 render template(html) ]
@@ -144,7 +146,7 @@ $python manage.py makemigrations
 ```
 $ python manage.py migrate
 ```
-#### 跑起來
+#### Run the service
 ```
 $ python .\manage.py runserver
 ```
