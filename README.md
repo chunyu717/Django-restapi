@@ -6,8 +6,7 @@ WSGI區分為兩個部份：一為「伺服器」或「閘道」，另一為「�
 專案內應用程式即是 "language". 
 
 此專案透過 djangorestframework 建立 API 不包含 template html 網頁的部分。
-網頁部分實作與設定虛擬環境這個部分參考 django-auth-practice (Login Page implement)
-較好. 
+網頁部分實作參考 django-auth-practice (Login Page implement)較好. 
 ![Screenshot](django.jpg)
 https://developer.mozilla.org/zh-TW/docs/Learn/Server-side/Django/Introduction
 
@@ -15,10 +14,10 @@ https://developer.mozilla.org/zh-TW/docs/Learn/Server-side/Django/Introduction
 $ pip install pipenv
 pipenv 的優點包括但不限於以下幾個：
 ```
-	1. 會在專案以外的地方放置專案所需的套件
-	2. 自動管理套件之間的 dependency ，方便移除套件．例如安裝 pyspark 時會需要一併安裝 py4j ，如果單純使用 pip 安裝，雖然可以一併安裝，但是用 pip uninstall 移除時需要一個一個移除．這點在 pipenv 會幫忙管理，自動移除相關的 lib
-	3. 可以區分 dev 環境的套件，在安裝時可以選擇要不要包含 dev 環境的套件．就可以保持 prod 套件的乾淨
-	4. 不需要使用 activate 或 deactivate 來切換環境．pipenv 可以使用 pipenv run 來直接使用虛擬環境提供的 lib
+1. 會在專案以外的地方放置專案所需的套件
+2. 自動管理套件之間的 dependency ，方便移除套件．例如安裝 pyspark 時會需要一併安裝 py4j ，如果單純使用 pip 安裝，雖然可以一併安裝，但是用 pip uninstall 移除時需要一個一個移除．這點在 pipenv 會幫忙管理，自動移除相關的 lib
+3. 可以區分 dev 環境的套件，在安裝時可以選擇要不要包含 dev 環境的套件．就可以保持 prod 套件的乾淨
+4. 不需要使用 activate 或 deactivate 來切換環境．pipenv 可以使用 pipenv run 來直接使用虛擬環境提供的 lib
 	如果對於以上優點有興趣的可以來試著用用看 pyenv
 ```
 
