@@ -5,29 +5,27 @@ WSGI區分為兩個部份：一為「伺服器」或「閘道」，另一為「�
 在處理一個WSGI請求時，伺服器會為應用程式提供環境資訊及一個回呼函式（Callback Function）。當應用程式完成處理請求後，透過前述的回呼函式，將結果回傳給伺服器。
 專案內應用程式即是 "language". 
 
-此專案透過 djangorestframework 建立 API 不包含 template html 網頁的部分。
-網頁部分實作參考 django-auth-practice (Login Page implement)較好. 
-![Screenshot](django.jpg)
+此專案透過 djangorestframework 建立 API 不包含 template html 網頁的部分(如下圖)。
+![Screenshot](./readme_pic/django.jpg)
 https://developer.mozilla.org/zh-TW/docs/Learn/Server-side/Django/Introduction
 
 # 前置步驟
 $ pip install pipenv
-pipenv 的優點包括但不限於以下幾個：
 ```
+pipenv 的優點包括以下幾個：
 1. 會在專案以外的地方放置專案所需的套件
 2. 自動管理套件之間的 dependency ，方便移除套件．例如安裝 pyspark 時會需要一併安裝 py4j ，如果單純使用 pip 安裝，雖然可以一併安裝，但是用 pip uninstall 移除時需要一個一個移除．這點在 pipenv 會幫忙管理，自動移除相關的 lib
 3. 可以區分 dev 環境的套件，在安裝時可以選擇要不要包含 dev 環境的套件．就可以保持 prod 套件的乾淨
 4. 不需要使用 activate 或 deactivate 來切換環境．pipenv 可以使用 pipenv run 來直接使用虛擬環境提供的 lib
-	如果對於以上優點有興趣的可以來試著用用看 pyenv
 ```
 
 # Getting Started With Django REST Framewore
 https://www.django-rest-framework.org/tutorial/quickstart/
 https://www.youtube.com/watch?v=263xt_4mBNc&t=0s&list=WL&index=9
 ## 安裝 djangorestframework framework :
-$ mkdir -p django-REST
-$ cd dango-REST\
-$ pipenv install djangorestframework
+    $ mkdir -p django-REST
+    $ cd dango-REST\
+    $ pipenv install djangorestframework
 ```
 Success!
 Updated Pipfile.lock (819182)!
@@ -36,7 +34,7 @@ To activate this project's virtualenv, run pipenv shell.
 Alternatively, run a command inside the virtualenv with pipenv run.
 ```
 #### Start python virtual evn. :
-$ pipenv shell
+    $ pipenv shell
 ```
 PS D:\workspace\Django-restapi-Pratice> pipenv shell 
 Shell for C:\Users\jerry\.virtualenvs\Django-restapi-Pratice-xUWfhvPf already activated.
@@ -158,30 +156,30 @@ admin.site.register(Language)
 ```
 
 #### 可以在  localhost:8000/admin 的網頁看到 Language
-![Screenshot](adminPage1.jpg)
-![Screenshot](adminPage2.jpg)
+![Screenshot](./readme_pic/adminPage1.jpg)
+![Screenshot](./readme_pic/adminPage2.jpg)
 
 
 #### 瀏覽 http://localhost:8000
 http://localhost:8000/admin
-![Screenshot](adminPage3.jpg)
+![Screenshot](./readme_pic/adminPage3.jpg)
 
 #### 用 postman 測試
 ```
 GET http://localhost:8000/languages/
 ```
-![Screenshot](postmanGet.jpg)
+![Screenshot](./readme_pic/postmanGet.jpg)
 ```
 post http://localhost:8000/languages/
 {"name": "C++", "paradigm": "20200702"}
 ```
-![Screenshot](postmanPost.jpg)
+![Screenshot](./readme_pic/postmanPost.jpg)
 #### router 會自己產生下面的model url 
 ```
 http://localhost:8000/languages/2/
 ```
-![Screenshot](router1.jpg)
-![Screenshot](router2.jpg)
+![Screenshot](./readme_pic/router1.jpg)
+![Screenshot](./readme_pic/router2.jpg)
 ---
 ---
 # 倘若要 react 與 django 整合
